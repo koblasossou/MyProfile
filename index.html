@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KoblaSossouPortfolio</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-image: url(https://scontent.flfw4-1.fna.fbcdn.net/v/t39.30808-6/495164947_1912860779464937_8146777817758020719_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NSLMZ1EtqFIQ7kNvwHjae-_&_nc_oc=AdnTA9P1TuYrvPWwmEyBVjvpmqLvXaeeTeepAd1EnUkN6et1iGJ-8wvnl5XYOA-JMkZkWhG2ZQB9KIBVjmMelXqk&_nc_zt=23&_nc_ht=scontent.flfw4-1.fna&_nc_gid=9KX23OxwEl8BZjbx-7udEA&oh=00_AfFixxjPdBq5tGQ8r0PdrgHySlRMYRXLv89YaFVgYr4bcQ&oe=681B924C);
+      color: #333;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.5em;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Container styles */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    /* About section */
+    #about {
+      background-color: rgb(222, 213, 191);
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #about img {
+      flex: 1 1 200px;
+      max-width: 200px;
+      border-radius: 50%;
+      margin-right: 30px;
+      border: 4px solid #ddd;
+    }
+
+    #about .bio {
+      flex: 3 1 300px;
+    }
+
+    #about h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    #about p {
+      font-size: 1.1em;
+    }
+
+    /* Skills section */
+    #skills {
+      background-color: #fff;
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #skills h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .skill {
+      background-color: rgb(222, 213, 191);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .skill:hover {
+      background-color: #e2e2e2;
+    }
+
+    .skill h3 {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    /* Projects section */
+    #projects {background-color: blanchedalmond;
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #projects h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .project img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .project-details {
+      padding: 15px;
+    }
+
+    .project-details h3 {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .project-details p {
+      font-size: 0.95em;
+    }
+
+    /* Contact section */
+    #contact {
+      background-color: #fff;
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #contact h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 768px) {
+      #about {
+        flex-direction: column;
+        align-items: center;
+        
+      }
+      #about img {
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1> Kobla Sossou<br>
+    (Jules) IT & CUSTOMER SUPPORT - WEB DEVELOPER - SYSTEM & NETWORK</h1>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- About Me Section -->
+    <section id="about" >
+      <img src= "" alt="Jules Kobla">
+      <div class="bio">
+        <h2>About Me</h2>
+        <p>Hello! 
+          I'm Jules Kobla,<br>
+          A passionate web developer with expertise in creating responsive, user-friendly websites and applications. Let's change ideas into reality using HTML, CSS, and JavaScript.
+           Let's build something amazing together!<br>
+           Need a Super Customer service to grow you business? Don't miss out! I am the solution!<br>
+           Need any IT support? 
+           I am available! </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">
+          <h3>HTML5</h3>
+          <p>Semantic and accessible markup to structure web content effectively.</p>
+        </div>
+        <div class="skill">
+          <h3>CSS3</h3>
+          <p>Designing responsive layouts with Flexbox, Grid, and animations.</p>
+        </div>
+        <div class="skill">
+          <h3>JavaScript</h3>
+          <p>Interactive features and dynamic content with ES6+ standards.</p>
+        </div>
+        <div class="skill">
+          <h3>React</h3>
+          <p>Building component-based user interfaces for modern web apps.</p>
+        </div>
+        <div class="skill">
+          <h3>CSS Frameworks</h3>
+          <p>Bootstrap, Tailwind CSS for faster styling and prototyping.</p>
+        </div>
+        <div class="skill">
+          <h3>Version Control</h3>
+          <p>Git and GitHub for collaborative development and version management.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <a href="https://accordpharma.pythonanywhere.com/" alt="Project 1" />
+          <div class="project-details">
+            <h3>Business Website</h3>
+            <p>A business wibesite being created for a medical representative agency with HTML, CSS, and JavaScript.</p>
+          </div>
+        </div>
+        <div class="project">
+          <a href="https://www.archipro-app.com" alt="Project 2" />
+          <div class="project-details">
+            <h3>ArchiPro-app</h3>
+            <p>Digital and physical archive management application developed together with a fellow developer</p>
+          </div>
+        </div>
+        <div class="project">
+          <a href="http://127.0.0.1:5500/dynamicblog.html" alt="Project 3" />
+          <div class="project-details">
+            <h3>Blog Platform</h3>
+            <p>A dynamic blog platform with user authentication and content management.</p>
+          </div>
+        </div> 
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-info">
+        <p>Email: koblasossou@gmail.com</p>
+        <p>Phone: +228 90 30 82 95</p>
+        <a href="https://www.linkedin.com/in/kobla-sossou-it/" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/freeboy.julio/about_work_and_education/"target="_blank">Facebook</a>
+      </div>
+    </section>
+  
+  </div>
+
+  <footer>
+    <p>&copy; Kobla Sossou. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
