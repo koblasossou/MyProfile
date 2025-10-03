@@ -1,334 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KoblaPortfolio</title>
-  <style>
-    /* Reset some default styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kobla Sossou - Front-End Developer</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      background-image: url(https://scontent.flfw4-1.fna.fbcdn.net/v/t39.30808-6/495164947_1912860779464937_8146777817758020719_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NSLMZ1EtqFIQ7kNvwHjae-_&_nc_oc=AdnTA9P1TuYrvPWwmEyBVjvpmqLvXaeeTeepAd1EnUkN6et1iGJ-8wvnl5XYOA-JMkZkWhG2ZQB9KIBVjmMelXqk&_nc_zt=23&_nc_ht=scontent.flfw4-1.fna&_nc_gid=9KX23OxwEl8BZjbx-7udEA&oh=00_AfFixxjPdBq5tGQ8r0PdrgHySlRMYRXLv89YaFVgYr4bcQ&oe=681B924C);
-      color: #333;
-    }
+    <!-- Favicon-->
+    <link rel="icon" type="image/svg+xml" href="images/favicon/broadcast-pin.svg">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-    /* Header styles */
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header h1 {
-      margin-bottom: 10px;
-      font-size: 2.5em;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
 
-    nav {
-      margin-top: 10px;
-    }
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
 
-    nav a:hover {
-      color: #ffd700;
-    }
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-    /* Container styles */
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
 
-    /* About section */
-    #about {
-      background-color: rgb(222, 213, 191);
-      padding: 40px 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
 
-    #about img {
-      flex: 1 1 200px;
-      max-width: 200px;
-      border-radius: 50%;
-      margin-right: 30px;
-      border: 4px solid #ddd;
-    }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
 
-    #about .bio {
-      flex: 3 1 300px;
-    }
+        .language-toggle {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
 
-    #about h2 {
-      margin-bottom: 15px;
-      color: #333;
-    }
+        .language-toggle:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
 
-    #about p {
-      font-size: 1.1em;
-    }
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Skills section */
-    #skills {
-      background-color: #fff;
-      padding: 40px 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
 
-    #skills h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-    }
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInRight 1s ease 0.3s both;
+            transition: transform 0.3s ease;
+        }
 
-    .skill {
-      background-color: rgb(222, 213, 191);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      transition: background-color 0.3s;
-    }
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
 
-    .skill:hover {
-      background-color: #e2e2e2;
-    }
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-    .skill h3 {
-      margin-bottom: 10px;
-      color: #555;
-    }
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
 
-    /* Projects section */
-    #projects {background-color: blanchedalmond;
-      padding: 40px 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rotate 15s linear infinite reverse;
+        }
 
-    #projects h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
 
-    .project {
-      background-color: #f4f4f4;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        .btn-hero {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
 
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: var(--primary-color);
+        }
 
-    .project img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
 
-    .project-details {
-      padding: 15px;
-    }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
 
-    .project-details h3 {
-      margin-bottom: 10px;
-      color: #555;
-    }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
 
-    .project-details p {
-      font-size: 0.95em;
-    }
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
 
-    /* Contact section */
-    #contact {
-      background-color: #fff;
-      padding: 40px 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        .about-list li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
 
-    #contact h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
-    }
+        .about-list li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        /* Skills Section */
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-    .contact-info p {
-      margin: 10px 0;
-      font-size: 1.1em;
-    }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
 
-    /* Footer styles */
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-    }
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
 
-    /* Responsive adjustments */
-    @media(max-width: 768px) {
-      #about {
-        flex-direction: column;
-        align-items: center;
-        
-      }
-      #about img {
-        margin-bottom: 20px;
-        margin-right: 0;
-      }
-    }
-  </style>
+        .skill-card h4 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-light);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h4 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h5 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 2rem;
+            }
+
+            .profile-container::before {
+                width: 280px;
+                height: 280px;
+            }
+
+            .profile-container::after {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        /* Language Toggle Active State */
+        .language-toggle.active {
+            background: var(--accent-color);
+        }
+
+        /* Language Toggle System - Simplified */
+        .lang-en, .lang-fr {
+            display: block;
+        }
+
+        body[data-lang="fr"] .lang-en {
+            display: none;
+        }
+
+        body[data-lang="en"] .lang-fr {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>  Jules Kobla Sossou <br>
-    IT & CUSTOMER SUPPORT - WEB DEVELOPER - SYSTEM & NETWORK ADMINISTARTOR </h1>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+<body data-lang="en">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-broadcast-pin"></i> Jules K. Sossou
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item">
+                        <a class="nav-link lang-en" href="#about">About Me</a>
+                        <a class="nav-link lang-fr" href="#about">À Propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lang-en" href="#skills">Skills</a>
+                        <a class="nav-link lang-fr" href="#skills">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lang-en" href="#projects">Projects</a>
+                        <a class="nav-link lang-fr" href="#projects">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lang-en" href="#contact">Contact</a>
+                        <a class="nav-link lang-fr" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="btn language-toggle" onclick="toggleLanguage()">
+                    <i class="bi bi-translate"></i>
+                    <span class="lang-en">FR</span>
+                    <span class="lang-fr">EN</span>
+                </button>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <div class="container">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content">
+                    <h1 class="lang-en">Hello, I'm Kobla Sossou</h1>
+                    <h1 class="lang-fr">Bonjour, je suis Kobla Sossou</h1>
+                    
+                    <p class="lang-en">Front-End Developer passionate about creating beautiful and functional user experiences</p>
+                    <p class="lang-fr">Développeur Front-End passionné par la création d'expériences utilisateur belles et fonctionnelles</p>
+                    
+                    <a href="#about" class="btn-hero lang-en">
+                        <i class="bi bi-arrow-down"></i> Discover More
+                    </a>
+                    <a href="#about" class="btn-hero lang-fr">
+                        <i class="bi bi-arrow-down"></i> Découvrir Plus
+                    </a>
+                </div>
+                <div class="col-lg-5">
+                    <div class="profile-container">
+                        <img src="images/Jules.jpeg" 
+                             alt="Kobla Sossou" 
+                             class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- About Me Section -->
-    <section id="about" >
-      <img src= "koblaProfil.jpg" alt="Jules Kobla">
-      <div class="bio">
-        <h2>About Me</h2>
-        <p>Hello! 
-          I'm Jules Kobla,<br>
-          A passionate web developer with expertise in creating responsive, user-friendly websites and applications. Let's change ideas into reality using HTML, CSS, and JavaScript.
-           Let's build something amazing together!<br>
-           Need a Super Customer service to grow you business? Don't miss out! I am the solution!<br>
-           Need any IT support? 
-           I am available! </p>
-      </div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title lang-en">About Me</h2>
+            <h2 class="section-title lang-fr">À Propos de Moi</h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-content text-center">
+                        <p class="lang-en">
+                            A creative front-end developer passionate about crafting visually appealing and interactive user interfaces. 
+                            I specialize in bringing ideas to life with style and usability, focusing on creating seamless digital experiences 
+                            that engage and delight users.
+                        </p>
+                        <p class="lang-fr">
+                            Un développeur front-end créatif passionné par la création d'interfaces utilisateur visuellement attrayantes et interactives. 
+                            Je me spécialise dans la concrétisation d'idées avec style et utilisabilité, en me concentrant sur la création d'expériences 
+                            numériques fluides qui engagent et ravissent les utilisateurs.
+                        </p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <ul class="list-unstyled about-list lang-en">
+                                    <li><i class="bi bi-check-circle"></i> Responsive Design</li>
+                                    <li><i class="bi bi-check-circle"></i> Accessibility</li>
+                                    <li><i class="bi bi-check-circle"></i> Modern Web Standards</li>
+                                </ul>
+                                <ul class="list-unstyled about-list lang-fr">
+                                    <li><i class="bi bi-check-circle"></i> Design Responsive</li>
+                                    <li><i class="bi bi-check-circle"></i> Accessibilité</li>
+                                    <li><i class="bi bi-check-circle"></i> Standards Web Modernes</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="text-start lang-en">
+                                    <strong>Education:</strong><br>
+                                    • University of the People (US) - Computer Science Degree<br>
+                                    • FreeCodeCamp & W3 School - Continuous Research & Updates
+                                </p>
+                                <p class="text-start lang-fr">
+                                    <strong>Formation:</strong><br>
+                                    • University of the People (US) - Diplôme en Informatique<br>
+                                    • FreeCodeCamp & W3 School - Recherche et Mise à Jour Continue
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
-      <h2>My Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">
-          <h3>HTML5</h3>
-          <p>Semantic and accessible markup to structure web content effectively.</p>
+    <section id="skills" class="section" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title lang-en">Skills</h2>
+            <h2 class="section-title lang-fr">Compétences</h2>
+            
+            <p class="text-center lead mb-5 lang-en">A blend of modern technologies and development practices</p>
+            <p class="text-center lead mb-5 lang-fr">Un mélange de technologies modernes et de pratiques de développement</p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-html"></i>
+                        </div>
+                        <h4>HTML5</h4>
+                        <p class="lang-en">Semantic structure and accessibility-focused markup for modern web applications</p>
+                        <p class="lang-fr">Structure sémantique et balisage axé sur l'accessibilité pour les applications web modernes</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-css"></i>
+                        </div>
+                        <h4>CSS3</h4>
+                        <p class="lang-en">Advanced layout techniques (Flexbox, Grid), animations, and responsive styling</p>
+                        <p class="lang-fr">Techniques de mise en page avancées (Flexbox, Grid), animations et style responsive</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-js"></i>
+                        </div>
+                        <h4>JavaScript (ES6+)</h4>
+                        <p class="lang-en">Dynamic content creation and interactive user experiences</p>
+                        <p class="lang-fr">Création de contenu dynamique et expériences utilisateur interactives</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-bootstrap"></i>
+                        </div>
+                        <h4>React</h4>
+                        <p class="lang-en">Component-driven UI development and modern state management</p>
+                        <p class="lang-fr">Développement d'interface utilisateur basé sur les composants et gestion d'état moderne</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h4 class="lang-en">CSS Frameworks</h4>
+                        <h4 class="lang-fr">Frameworks CSS</h4>
+                        <p class="lang-en">Bootstrap & Tailwind CSS for rapid prototyping and consistent styling</p>
+                        <p class="lang-fr">Bootstrap & Tailwind CSS pour le prototypage rapide et le style cohérent</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon">
+                            <i class="bi bi-git"></i>
+                        </div>
+                        <h4 class="lang-en">Version Control</h4>
+                        <h4 class="lang-fr">Contrôle de Version</h4>
+                        <p class="lang-en">Git and GitHub for efficient collaboration and code management</p>
+                        <p class="lang-fr">Git et GitHub pour une collaboration efficace et la gestion du code</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="skill">
-          <h3>CSS3</h3>
-          <p>Designing responsive layouts with Flexbox, Grid, and animations.</p>
-        </div>
-        <div class="skill">
-          <h3>JavaScript</h3>
-          <p>Interactive features and dynamic content with ES6+ standards.</p>
-        </div>
-        <div class="skill">
-          <h3>React</h3>
-          <p>Building component-based user interfaces for modern web apps.</p>
-        </div>
-        <div class="skill">
-          <h3>CSS Frameworks</h3>
-          <p>Bootstrap, Tailwind CSS for faster styling and prototyping.</p>
-        </div>
-        <div class="skill">
-          <h3>Version Control</h3>
-          <p>Git and GitHub for collaborative development and version management.</p>
-        </div>
-      </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-      <h2>My Projects</h2>
-      <div class="projects-grid">
-        <div class="project">
-          <a href="https://accordpharma.pythonanywhere.com/" alt="Project 1" />
-          <div class="project-details">
-            <h3>Business Website</h3>
-            <p>A business wibesite being created for a medical representative agency with HTML, CSS, and JavaScript.</p>
-          </div>
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title lang-en">Projects</h2>
+            <h2 class="section-title lang-fr">Projets</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-8 mx-auto">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="bi bi-building" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3 class="lang-en">Explorer Tech</h3>
+                            <h3 class="lang-fr">Explorer Tech</h3>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="lang-en">Associate Front-End Developer</h4>
+                            <h4 class="lang-fr">Développeur Front-End Associé</h4>
+                            <p class="lang-en">
+                                Actively participating in Explorer Tech's web development projects with a hands-on approach 
+                                to real-world solutions. Contributing to clean and efficient UI development while collaborating 
+                                with cross-functional teams to deliver exceptional user experiences.
+                            </p>
+                            <p class="lang-fr">
+                                Participation active aux projets de développement web d'Explorer Tech avec une approche pratique 
+                                des solutions du monde réel. Contribution au développement d'interface utilisateur propre et efficace 
+                                tout en collaborant avec des équipes pluridisciplinaires pour offrir des expériences utilisateur exceptionnelles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="project">
-          <a href="https://www.archipro-app.com" alt="Project 2" />
-          <div class="project-details">
-            <h3>ArchiPro-app</h3>
-            <p>Digital and physical archive management application developed together with a fellow developer</p>
-          </div>
-        </div>
-        <div class="project">
-          <a href="http://127.0.0.1:5500/dynamicblog.html" alt="Project 3" />
-          <div class="project-details">
-            <h3>Blog Platform</h3>
-            <p>A dynamic blog platform with user authentication and content management.</p>
-          </div>
-        </div> 
-      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <div class="contact-info">
-        <p>Email: koblasossou@gmail.com</p>
-        <p>Phone: +228 90 30 82 95</p>
-        <a href="https://www.linkedin.com/in/kobla-sossou-it/" target="_blank">LinkedIn</a>
-        <a href="https://www.facebook.com/freeboy.julio/about_work_and_education/"target="_blank">Facebook</a>
-      </div>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title lang-en">Contact Me</h2>
+            <h2 class="section-title lang-fr">Me Contacter</h2>
+            
+            <p class="text-center lead mb-5 lang-en">Open to new opportunities and collaborations</p>
+            <p class="text-center lead mb-5 lang-fr">Ouvert aux nouvelles opportunités et collaborations</p>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <h5 class="lang-en">Email</h5>
+                        <h5 class="lang-fr">E-mail</h5>
+                        <a href="mailto:explorertech.team@gmail.com">explorertech.team@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </div>
+                        <h5>LinkedIn</h5>
+                        <a href="https://www.linkedin.com/in/kobla-sossou-it/" target="_blank">kobla-sossou-it</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <h5>GitHub</h5>
+                        <a href="https://github.com/koblasossou/MyProfile" target="_blank">koblasossou</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <h5 class="lang-en">Phone / WhatsApp</h5>
+                        <h5 class="lang-fr">Téléphone / WhatsApp</h5>
+                        <a href="tel:+22890308295">+228 90 30 82 95</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  
-  </div>
 
-  <footer>
-    <p>&copy; Kobla Sossou. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="lang-en">&copy; 2025 Kobla Sossou. All rights reserved. Built with passion and dedication.</p>
+            <p class="lang-fr">&copy; 2025 Kobla Sossou. Tous droits réservés. Construit avec passion et dévouement.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Language Toggle Function - Simplified
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang') || 'en';
+            const newLang = currentLang === 'en' ? 'fr' : 'en';
+            body.setAttribute('data-lang', newLang);
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', newLang);
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.body.setAttribute('data-lang', savedLang);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill cards and project cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.skill-card, .project-card, .contact-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
-
